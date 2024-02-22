@@ -5,7 +5,10 @@ import json
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.write("This is the Main page.")
+        with open("main_page.html", "r") as f:
+            html_content = f.read()
+        self.write(html_content)
+
 
 class AboutHandler(tornado.web.RequestHandler):
     def initialize(self, db_conn):
